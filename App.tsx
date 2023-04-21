@@ -1,20 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from "react";
+import { StatusBar, Text } from "react-native";
+import { ThemeKeys } from "./styles/themes";
+import ThemeContext from "./custom_context/ThemeContext";
+import useStatusBarStyle from "./custom_hooks/useStatusBarStyle";
+import Base from "./components/Base";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    const [theme, setTheme] = React.useState<ThemeKeys>(ThemeKeys.Dark);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    // memoize setTheme
+    const memoizedSetTheme = React.useCallback(setTheme, [setTheme]);
+    const memoizedThemeContextValue = React.useMemo(
+        () => ({ theme, setTheme: memoizedSetTheme }),
+        [theme, memoizedSetTheme]
+    );
+    const statusBarTheme = useStatusBarStyle(theme);
+
+    return (
+        <ThemeContext.Provider value={memoizedThemeContextValue}>
+            <StatusBar barStyle={statusBarTheme.content} backgroundColor={statusBarTheme.background} />
+            <Base />
+        </ThemeContext.Provider>
+    );
+}
