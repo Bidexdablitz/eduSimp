@@ -1,7 +1,7 @@
 import themes, { ThemeKeys } from "../../styles/themes";
 import Constants from "expo-constants";
-import { ViewStyle, TextStyle, ImageStyle } from "react-native";
 import { StyleType } from "../../custom_hooks/useStyles";
+import { screenPadding } from "../../styles/global";
 
 interface HomeStyleType {
     container: StyleType;
@@ -11,6 +11,7 @@ interface HomeStyleType {
 export default function HomeStyles(theme: ThemeKeys) {
     const styles: HomeStyleType = {
         container: {
+            ...screenPadding,
             flex: 1,
             // paddingTop: Constants.statusBarHeight,
             backgroundColor: themes[theme].backgroundColor,

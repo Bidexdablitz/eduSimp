@@ -1,25 +1,20 @@
-import * as React from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
-import HomeStyles from './HomeStyles';
-import useStyles from '../../custom_hooks/useStyles';
-import { ThemeKeys } from '../../styles/themes';
-import ThemeContext from '../../custom_context/ThemeContext';
+import * as React from "react";
+import { View, ScrollView } from "react-native";
+import HomeStyles from "./HomeStyles";
+import useStyles from "../../custom_hooks/useStyles";
+import TextInput from "../../components/TextInput/TextInput";
+import SearchIcon from "../../assets/icons/search_icon.svg";
+import DrawerToggle from "../../components/Drawer/DrawerToggle";
 
 export default function Home() {
-  const {theme, setTheme} = React.useContext(ThemeContext)!
-  const styles = useStyles(HomeStyles);
+    const styles = useStyles(HomeStyles);
 
-  function toggleTheme() {
-    theme === ThemeKeys.Dark
-      ? setTheme(ThemeKeys.Light)
-      : setTheme(ThemeKeys.Dark);
-  }
-
-  return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={toggleTheme}>
-        <Text style={styles.button}> toggle theme </Text>
-      </TouchableOpacity>
-    </View>
-  );
+    return (
+        <ScrollView style={styles.container}>
+            <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
+                <TextInput icon={<SearchIcon width={20} height={20} />} />
+                <DrawerToggle />
+            </View>
+        </ScrollView>
+    );
 }

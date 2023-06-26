@@ -1,5 +1,6 @@
-import { StyleType } from "../custom_hooks/useStyles";
-import themes, { ThemeKeys } from "./themes";
+import { StyleType } from "../../custom_hooks/useStyles";
+import { screenPadding } from "../../styles/global";
+import themes, { ThemeKeys } from "../../styles/themes";
 import { StyleSheet } from "react-native";
 
 interface BottomTabStyleType {
@@ -16,10 +17,8 @@ interface BottomTabStyleType {
 export default function BottomTabStyles(theme: ThemeKeys) {
     const styles: BottomTabStyleType = {
         container: {
-            bottom: 0,
-            left: 0,
-            right: 0,
-            position: "absolute",
+            ...StyleSheet.absoluteFillObject,
+            top: undefined,
         },
         touchable: {
             flex: 1,
@@ -28,11 +27,11 @@ export default function BottomTabStyles(theme: ThemeKeys) {
         },
         text: { color: themes[theme].bottomTab.color },
         itemsWrapper: {
+            ...screenPadding,
             flex: 1,
             gap: 5,
             flexDirection: "row",
             justifyContent: "space-around",
-            paddingHorizontal: 10,
         },
         backDropSvg: {
             backgroundColor: themes[theme].bottomTab.backgroundColor,
