@@ -9,7 +9,5 @@ export default function useStyles<T extends StyleSheet.NamedStyles<T>>(
     styleFormatter: (theme: ThemeKeys) => T
 ) {
     const { theme } = React.useContext(ThemeContext)!;
-    return React.useMemo(() => {
-        return StyleSheet.create(styleFormatter(theme));
-    }, [theme]);
+    return React.useMemo(() => StyleSheet.create(styleFormatter(theme)), [theme]);
 }

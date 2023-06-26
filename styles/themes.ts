@@ -16,6 +16,7 @@ export interface StyleMap {
     };
 }
 
+// edit this to add a new theme to the app
 export enum ThemeKeys {
     Light = "light",
     Dark = "dark",
