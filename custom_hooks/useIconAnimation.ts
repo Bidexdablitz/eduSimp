@@ -12,6 +12,6 @@ export default function useIconAnimation({ height, focused }: any) {
             translateY: withTiming(height, { duration: 200 }),
             opacity: withTiming(0, { duration: 100 }),
         };
-    });
+    }, [focused]);
     return animatedProps;
 }

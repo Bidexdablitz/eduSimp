@@ -11,7 +11,7 @@ import Drawer from "./components/Drawer/Drawer";
 const DrawerNavigator = createDrawerNavigator();
 
 export default function App() {
-    const [theme, setTheme] = React.useState<ThemeKeys>(ThemeKeys.Dark);
+    const [theme, setTheme] = React.useState<ThemeKeys>(ThemeKeys.Light);
 
     // memoize theme
     const memoizedThemeContextValue = React.useMemo(() => {

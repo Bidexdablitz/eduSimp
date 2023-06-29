@@ -2,25 +2,22 @@ import * as React from "react";
 import Svg, { Mask, Rect, G, Path } from "react-native-svg";
 import { Dimensions } from "react-native";
 import useStyles from "../../custom_hooks/useStyles";
-import BottomBarStyles from "./BottomTabStyles";
+import BottomTabStyles from "./BottomTabStyles";
 import Animated, { SharedValue, useAnimatedProps } from "react-native-reanimated";
+import { activeCaseType } from "./BottomTab";
 
 interface SvgProps {
-    activeCaseTranslate: SharedValue<number>;
+    activeCase: activeCaseType;
     width?: number;
     height?: number;
 }
 const AnimatedSvg = Animated.createAnimatedComponent(Svg);
 
-function SVGComponent({
-    activeCaseTranslate,
-    width = Dimensions.get("window").width * 2.5,
-    height = 62,
-}: SvgProps) {
-    const styles = useStyles(BottomBarStyles);
+function SVGComponent({ activeCase, width = Dimensions.get("window").width * 2.5, height = 50 }: SvgProps) {
+    const styles = useStyles(BottomTabStyles);
     const animatedProps = useAnimatedProps(() => {
         return {
-            translateX: activeCaseTranslate.value - width / 2,
+            translateX: activeCase.translateX!.value - width / 2,
         };
     });
 

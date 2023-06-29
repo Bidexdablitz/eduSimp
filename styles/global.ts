@@ -1,6 +1,6 @@
 import { StyleType } from "../custom_hooks/useStyles";
 
-const paddingWidth = 15;
+export const paddingWidth = 15;
 export const screenPadding: StyleType = {
     padding: paddingWidth,
 };

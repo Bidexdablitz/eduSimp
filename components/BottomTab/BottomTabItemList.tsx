@@ -1,11 +1,11 @@
-import { BottomTabBarProps, BottomTabNavigationEventMap } from "@react-navigation/bottom-tabs";
+import { BottomTabNavigationEventMap } from "@react-navigation/bottom-tabs";
 import * as React from "react";
-import { TouchableOpacity, View } from "react-native";
+import { View, Pressable } from "react-native";
 import useStyles from "../../custom_hooks/useStyles";
 import BottomTabStyles from "./BottomTabStyles";
 import { StyleSheet } from "react-native";
-import { SharedValue } from "react-native-reanimated";
 import { NavigationHelpers, ParamListBase } from "@react-navigation/native";
+import { activeCaseType } from "./BottomTab";
 
 interface Props {
     navigation: NavigationHelpers<ParamListBase, BottomTabNavigationEventMap>;
@@ -17,33 +17,26 @@ interface Props {
         }[];
         activeIcon: any;
     };
-    activeCase: any;
-    activeCaseTranslate: SharedValue<number>;
+    activeCase: activeCaseType;
 }
 
-function BottomTabItemList({ navigation, Tabs, activeCase, activeCaseTranslate }: Props) {
+function BottomTabItemList({ navigation, Tabs, activeCase }: Props) {
     const styles = useStyles(BottomTabStyles);
 
     return (
         <View style={[styles.itemsWrapper, StyleSheet.absoluteFill]}>
             {Tabs.list.map((item: any, index: number) => (
-                <TabItem
-                    item={item}
-                    navigation={navigation}
-                    key={index}
-                    activeCase={activeCase}
-                    activeCaseTranslate={activeCaseTranslate}
-                />
+                <TabItem item={item} navigation={navigation} key={index} activeCase={activeCase} />
             ))}
         </View>
     );
 }
 
-function TabItem({ item, navigation, activeCase, activeCaseTranslate }: any) {
+function TabItem({ item, navigation, activeCase }: any) {
     const styles = useStyles(BottomTabStyles);
     const size = 20;
     return (
-        <TouchableOpacity style={styles.touchable} onPress={() => navigation.navigate(item.name)}>
+        <Pressable onPressIn={() => navigation.navigate(item.name)} style={styles.touchable}>
             <item.Icon
                 focused={item.isFocused}
                 fill={styles.icon.backgroundColor}
@@ -52,9 +45,8 @@ function TabItem({ item, navigation, activeCase, activeCaseTranslate }: any) {
                 height={size}
                 strokeWidth={1}
                 activeCase={activeCase}
-                activeCaseTranslate={activeCaseTranslate}
             />
-        </TouchableOpacity>
+        </Pressable>
     );
 }
 

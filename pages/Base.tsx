@@ -3,6 +3,7 @@ import BottomTab from "../components/BottomTab/BottomTab";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "./Home/Home";
 import * as bottomTabIcons from "../assets/bottomTab";
+import Favourites from "./Favourites/Favourites";
 
 const TabNavigator = createBottomTabNavigator();
 
@@ -19,7 +20,7 @@ export default function Base() {
             />
             <TabNavigator.Screen
                 name="Events"
-                component={Home}
+                component={Favourites}
                 options={{ tabBarIcon: bottomTabIcons.EventsIcon }}
             />
             <TabNavigator.Screen

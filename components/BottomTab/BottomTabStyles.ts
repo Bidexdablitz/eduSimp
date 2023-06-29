@@ -1,5 +1,5 @@
 import { StyleType } from "../../custom_hooks/useStyles";
-import { screenPadding } from "../../styles/global";
+import { paddingWidth } from "../../styles/global";
 import themes, { ThemeKeys } from "../../styles/themes";
 import { StyleSheet } from "react-native";
 
@@ -27,9 +27,8 @@ export default function BottomTabStyles(theme: ThemeKeys) {
         },
         text: { color: themes[theme].bottomTab.color },
         itemsWrapper: {
-            ...screenPadding,
+            paddingHorizontal: paddingWidth,
             flex: 1,
-            gap: 5,
             flexDirection: "row",
             justifyContent: "space-around",
         },
