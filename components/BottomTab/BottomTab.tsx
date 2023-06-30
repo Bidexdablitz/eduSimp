@@ -7,11 +7,13 @@ import Animated, { useAnimatedStyle, useSharedValue, FadeInDown, SharedValue } f
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import BottomTabItemList from "./BottomTabItemList";
 import { BottomTabIconSvgProp } from "@assets/bottomTab";
+import { BottomTabIconProps } from "@utils/BottomTabIconWrapper";
 
 export interface activeCaseType {
     width: number;
     translateX: SharedValue<number> | null;
 }
+
 export default function BottomTab({ state, descriptors, navigation }: BottomTabBarProps) {
     const styles = useStyles(BottomTabStyles);
     // memoize dictionary to prevent unnecessary rerenders of tab icons
@@ -19,19 +21,19 @@ export default function BottomTab({ state, descriptors, navigation }: BottomTabB
     activeCase.translateX = useSharedValue(0);
 
     const Tabs = React.useMemo(() => {
-        let activeIcon: any;
+        let activeIcon: React.FC<BottomTabIconProps>;
         return {
-            list: state.routes.map((route: any, index: number) => {
+            list: state.routes.map((route, index) => {
                 const { options } = descriptors[route.key];
                 const focused = state.index === index;
-                if (focused) activeIcon = options.tabBarIcon;
+                if (focused) activeIcon = options.tabBarIcon as unknown as typeof activeIcon;
                 return {
                     name: route.name,
                     isFocused: focused,
                     Icon: options.tabBarIcon,
                 };
             }),
-            activeIcon: activeIcon,
+            activeIcon: activeIcon!,
         };
     }, [state, descriptors]);
 

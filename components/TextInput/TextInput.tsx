@@ -1,41 +1,30 @@
+import useStyles from "@custom_hooks/useStyles";
 import React from "react";
-import { Pressable, TextInput, View } from "react-native";
+import { Pressable, TextInput, View, TextInputProps } from "react-native";
+import TextInputStyles from "./TextInputStyles";
+import themes from "@styles/themes";
+import ThemeContext from "@custom_context/ThemeContext";
 
-interface InputProps {
+type InputProps = {
     icon?: React.ReactNode;
-}
+} & TextInputProps;
 
 export default function MyTextInput(props: InputProps) {
+    const { theme } = React.useContext(ThemeContext)!;
     const [focused, setFocused] = React.useState(false);
     const ref = React.useRef<TextInput | null>(null);
-
+    const styles = useStyles(TextInputStyles);
     return (
         <Pressable
-            style={[
-                {
-                    flex: 1,
-                    flexDirection: "row",
-                    borderRadius: 10,
-                    padding: 8,
-                    backgroundColor: "#EFEFF0",
-                    borderColor: "#EFEFF0",
-                    alignItems: "center",
-                },
-                focused ? { backgroundColor: "pink" } : null,
-            ]}
+            style={[styles.container, focused ? { borderColor: "pink" } : null]}
             onPress={() => ref.current?.focus()}
         >
             {props.icon}
             <TextInput
                 ref={ref}
                 placeholder="Search"
-                style={[
-                    {
-                        flex: 1,
-                        color: "#848488",
-                        paddingLeft: props.icon ? 8 : 0,
-                    },
-                ]}
+                placeholderTextColor={themes[theme].textInput.placeholder}
+                style={[styles.inputField, { paddingLeft: props.icon ? 8 : 0 }]}
                 onFocus={() => setFocused(true)}
                 onBlur={() => setFocused(false)}
                 {...props}

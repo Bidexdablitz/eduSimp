@@ -27,6 +27,8 @@ module.exports = function (api) {
                         "@custom_hooks": "./custom_hooks",
                         "@pages": "./pages",
                         "@custom_context": "./custom_context",
+                        "@utils": "./utils",
+                        "@styles": "./styles",
                     },
                 },
             ],

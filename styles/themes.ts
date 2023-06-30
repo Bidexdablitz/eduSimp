@@ -1,3 +1,5 @@
+import { ColorValue } from "react-native";
+
 export interface StyleMap {
     backgroundColor: string;
     color: string;
@@ -13,6 +15,14 @@ export interface StyleMap {
             backgroundColor: string;
             borderColor: string;
         };
+    };
+    drawer: {
+        background: string;
+    };
+    textInput: {
+        placeholder: ColorValue;
+        backgroundColor: ColorValue;
+        color: ColorValue;
     };
 }
 
@@ -43,6 +53,14 @@ const themes: Themes = {
                 borderColor: "white",
             },
         },
+        drawer: {
+            background: "#F2F2F2",
+        },
+        textInput: {
+            placeholder: "#333",
+            backgroundColor: "#f2f2f2",
+            color: "#000",
+        },
     },
     [ThemeKeys.Dark]: {
         backgroundColor: "black",
@@ -59,6 +77,14 @@ const themes: Themes = {
                 backgroundColor: "#FF0000",
                 borderColor: "white",
             },
+        },
+        drawer: {
+            background: "#333",
+        },
+        textInput: {
+            placeholder: "#999",
+            backgroundColor: "#333",
+            color: "#fff",
         },
     },
 };

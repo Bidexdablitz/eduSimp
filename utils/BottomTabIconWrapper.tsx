@@ -6,7 +6,7 @@ import { updateIconDimensions } from "./updateIconDimensions";
 import { BottomTabIconSvgProp } from "../assets/bottomTab";
 import { withSpring } from "react-native-reanimated";
 
-type BottomTabIconProps = {
+export type BottomTabIconProps = {
     focused: boolean;
     inActiveCase: boolean;
     activeCase: activeCaseType;

@@ -19,7 +19,7 @@ function Drawer(props: DrawerContentComponentProps) {
                             Bamidele Damilola joseph
                         </Text>
                         <Text style={styles.userEmail} numberOfLines={1}>
-                            bamideledamilofdfdfdfdfdla@gmail.comadfdf
+                            bamideledamilola3@gmail.com
                         </Text>
                     </View>
                 </View>

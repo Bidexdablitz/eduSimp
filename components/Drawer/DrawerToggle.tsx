@@ -1,6 +1,6 @@
 import * as React from "react";
 import { TouchableOpacity } from "react-native";
-import SearchIcon from "../../assets/icons/search_icon.svg";
+import SearchIcon from "@assets/icons/search_icon.svg";
 import { useNavigation, DrawerActions } from "@react-navigation/native";
 
 export default function DrawerToggle() {

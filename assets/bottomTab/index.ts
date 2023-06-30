@@ -7,12 +7,12 @@ export { default as EventsIcon } from "./Events";
 export { default as HomeIcon } from "./Home";
 
 export interface BottomTabIconSvgProp {
-    fill: string;
+    fill: ColorValue | undefined;
     strokeWidth: number;
-    stroke: ColorValue;
+    stroke: ColorValue | undefined;
     width: number;
     height: number;
-    animatedProps: Partial<{ translateY: number; opacity: number }>;
+    animatedProps?: Partial<{ translateY: number; opacity: number }>;
     entering?:
         | BaseAnimationBuilder
         | typeof BaseAnimationBuilder
