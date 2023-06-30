@@ -16,6 +16,7 @@
         "@react-navigation/bottom-tabs": "^6.5.7",
         "@react-navigation/drawer": "^6.6.2",
         "@react-navigation/native": "^6.1.7",
+        "@reduxjs/toolkit": "^1.9.5",
         "@types/react-dom": "^18.0.11",
         "expo": "~48.0.11",
         "expo-dev-client": "~2.2.1",
